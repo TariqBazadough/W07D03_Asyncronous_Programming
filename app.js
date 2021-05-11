@@ -23,7 +23,19 @@ const writeFile = () => {
     console.log("A new file has been created");
   });
 };
+const getPost = (id) => {
+  axios
+    .get(`https://jsonplaceholder.typicode.com/posts/${id}/`)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+};
 
+getPost(1);
+getPost(50);
 writeFile();
 readFile();
 
