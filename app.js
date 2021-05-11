@@ -34,9 +34,18 @@ const getPost = (id) => {
     });
 };
 
-getPost(1);
-getPost(50);
-writeFile();
+const getPostAsync = async (data) => {
+  let response;
+  response = await axios.get(
+    `https://jsonplaceholder.typicode.com/posts/${data}/`
+  );
+  console.log(response.data);
+};
+
+getPostAsync(50);
+// getPost(1);
+// getPost(50);
+// writeFile();
 readFile();
 
 app.listen(port, () => {
