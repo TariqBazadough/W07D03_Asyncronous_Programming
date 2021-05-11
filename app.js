@@ -45,11 +45,19 @@ const getPostAsync = async (data) => {
   }
 };
 
-getPostAsync(50);
-getPost(1);
-// getPost(50);
-writeFile();
+const appendToFile = (data) => {
+  fs.appendFile("./data.txt", data, (error) => {
+    if (error) throw error;
+    // console.log(data);
+  });
+};
+
+// getPostAsync(50);
+// getPost(1);
+// // getPost(50);
+// writeFile();
 readFile();
+// appendToFile("this is the new data");
 
 app.listen(port, () => {
   console.log("W07D03_Asyncronous_Programming");
