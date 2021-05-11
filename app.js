@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-const promiseFs = require("fs").promises
+const promiseFs = require("fs").promises;
 
 const readFile = async () => {
   try {
@@ -17,6 +17,14 @@ const readFile = async () => {
   }
 };
 
+const writeFile = () => {
+  fs.writeFile("text.txt", "A new file has been created", (err) => {
+    if (err) throw err;
+    console.log("A new file has been created");
+  });
+};
+
+writeFile();
 readFile();
 
 app.listen(port, () => {
