@@ -48,7 +48,12 @@ const getPostAsync = async (data) => {
 const appendToFile = (data) => {
   fs.appendFile("./data.txt", data, (error) => {
     if (error) throw error;
-    // console.log(data);
+  });
+};
+
+const copyFile = (fileName) => {
+  fs.copyFile(fileName, `copy_of_${fileName}`, (error) => {
+    if (err) throw err;
   });
 };
 
@@ -58,6 +63,7 @@ const appendToFile = (data) => {
 // writeFile();
 readFile();
 // appendToFile("this is the new data");
+// copyFile("data.txt");
 
 app.listen(port, () => {
   console.log("W07D03_Asyncronous_Programming");
