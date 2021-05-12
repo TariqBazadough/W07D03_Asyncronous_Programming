@@ -3,7 +3,7 @@ const fs = require("fs");
 const axios = require("axios");
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.use(express.json());
 const promiseFs = require("fs").promises;
@@ -56,6 +56,23 @@ const copyFile = (fileName) => {
     if (err) throw err;
   });
 };
+const post = JSON.stringify({
+  title: "JavaScript Basics",
+  body: "This post contains information about javaScript ",
+  userId: 1,
+});
+
+const createPost = (post) => {
+  axios
+    .post("https://jsonplaceholder.typicode.com/posts", post)
+    .then((response) => {
+      console.log(response.data);
+      return response;
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+};
 
 // getPostAsync(50);
 // getPost(1);
@@ -64,6 +81,7 @@ const copyFile = (fileName) => {
 readFile();
 // appendToFile("this is the new data");
 // copyFile("data.txt");
+createPost(post);
 
 app.listen(port, () => {
   console.log("W07D03_Asyncronous_Programming");
